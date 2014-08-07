@@ -14,6 +14,8 @@ class FeaturesController extends AppController {
  * @var array
  */
 	public $components = array('Paginator');
+	
+	//public $actsAs = array('Containable');
 
 /**
  * index method
@@ -36,12 +38,10 @@ class FeaturesController extends AppController {
 		if (!$this->Feature->exists($id)) {
 			throw new NotFoundException(__('Invalid feature'));
 		}
-		
+		//$this->Feature->recursive = 2;
 		$this->Feature->Behaviors->load('Containable');
-
-		$this->Feature->contain('FeaturePage.Page','User');
-
-		$options = array('conditions' => array('Feature.' . $this->Feature->primaryKey => $id));
+		//$this->Feature->contain('FeaturePage.Page');
+		$options = array('contain'=>'FeaturePage.Page', 'conditions' => array('Feature.' . $this->Feature->primaryKey => $id));
 		$this->set('feature', $this->Feature->find('first', $options));
 	}
 

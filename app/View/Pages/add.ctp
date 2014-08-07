@@ -15,7 +15,6 @@
 </div>
 
 
-
 <?php
 	$this->start('left_area');
 	?>
@@ -34,8 +33,3 @@
 <?php
 	$this->end();
 	?>
-
-<?php echo $this->Html->script('tinymce/tinymce.min.js'); ?>
-<script type="text/javascript">
-	tinymce.init({selector: "textarea"});
-</script>

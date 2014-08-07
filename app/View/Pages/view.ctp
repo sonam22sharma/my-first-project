@@ -10,11 +10,10 @@
 <p>created by: <?php echo $this->Html->link($page['User']['username'], array('controller' => 'users', 'action' => 'view', $page['User']['id'])); ?> on <?php echo h($page['Page']['created']); ?> updated on <?php echo h($page['Page']['modified']); ?></p>
 
 
-
 <?php
 	$this->start('left_area');
 	?>
-	
+
 <div class="actions">
 	<h3><?php echo __('Actions'); ?></h3>
 	<ul>
@@ -32,3 +31,4 @@
 <?php
 	$this->end();
 	?>
+

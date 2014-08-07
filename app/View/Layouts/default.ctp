@@ -26,37 +26,16 @@
     <![endif]-->
 
 </head>
-
 <body>
 
-	
+
 
     <!-- Navigation -->
-    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-        <div class="container">
-            <!-- Brand and toggle get grouped for better mobile display -->
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand" href="index.html">My CMS</a>
-            </div>
-            <!-- Collect the nav links, forms, and other content for toggling -->
-            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-			
-			    <ul class="nav navbar-nav navbar-right">
-				
-				<?php echo $this->element('header_menu');?>
+    
+ <?php echo $this->element('header_menu');?>   
 
-                </ul>
-            </div>
-            <!-- /.navbar-collapse -->
-        </div>
-        <!-- /.container -->
-    </nav>
+  <?php  echo $this->fetch('carousel_slide');  ?>
+	
 	
 	<!-- Header Carousel -->
     <header id="myCarousel" class="carousel slide">
@@ -98,6 +77,10 @@
         </a>
     </header>
 
+	
+	
+	<?php echo $this->fetch('banner_area'); ?>
+	
     <!-- Page Content -->
     <div class="container">
 
@@ -105,7 +88,7 @@
         <div class="row">
             <div class="col-lg-12">
                 <h1 class="page-header">
-                    Welcome to Modern Business
+                    Welcome to My CMS
                 </h1>
             </div>
             <div class="col-md-4">
@@ -144,7 +127,13 @@
         </div>
         <!-- /.row -->
 		
-		
+	
+	
+
+
+
+
+	
         <!-- Portfolio Section -->
         <div class="row">
             <div class="col-lg-12">

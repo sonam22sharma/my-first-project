@@ -15,6 +15,26 @@ class Page extends AppModel {
  */
 	public $displayField = 'name';
 
+	
+	public $searchFields = array('name'=>array('type'=>'text'), 'status'=>array('type'=>'options'));
+	
+/**
+ * Validation rules
+ *
+ * @var array
+ */
+	public $validate = array(
+		'name' => array(
+			'notEmpty' => array(
+				'rule' => array('notEmpty'),
+				//'message' => 'Your custom message here',
+				//'allowEmpty' => false,
+				//'required' => false,
+				//'last' => false, // Stop validation after this rule
+				//'on' => 'create', // Limit validation to 'create' or 'update' operations
+			),
+		),
+	);
 
 	//The Associations below have been created with all possible keys, those that are not needed can be removed
 
@@ -39,4 +59,10 @@ class Page extends AppModel {
 			'order' => ''
 		)
 	);
+	
+	
+	public function isOwnedBy($page_id, $user_id) {
+		return $this->field('id', array('id' => $page_id, 'user_id' => $user_id)) !== false;
+	}
+	
 }

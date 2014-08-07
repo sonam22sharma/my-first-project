@@ -9,7 +9,7 @@
 		echo $this->Form->input('status', array('div' => array('class' => 'form-group'), 'class' => 'form-control'));
 	?>
 	</fieldset>
-<?php echo $this->Form->end(array('label' =>__('Submit'), 'class' => 'btn btn-primary')); ?>
+<?php echo $this->Form->end(array('label' =>__('Submit'), 'type'=>'button', 'class' => 'btn btn-primary')); ?>
 </div>
 <?php
 	$this->start('left_area');

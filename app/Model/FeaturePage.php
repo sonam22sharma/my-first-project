@@ -3,9 +3,9 @@ App::uses('AppModel', 'Model');
 /**
  * FeaturePage Model
  *
- * @property Page $Page
  * @property User $User
  * @property Feature $Feature
+ * @property Page $Page
  */
 class FeaturePage extends AppModel {
 
@@ -25,13 +25,6 @@ class FeaturePage extends AppModel {
  * @var array
  */
 	public $belongsTo = array(
-		'Page' => array(
-			'className' => 'Page',
-			'foreignKey' => 'page_id',
-			'conditions' => '',
-			'fields' => '',
-			'order' => ''
-		),
 		'User' => array(
 			'className' => 'User',
 			'foreignKey' => 'user_id',
@@ -42,6 +35,13 @@ class FeaturePage extends AppModel {
 		'Feature' => array(
 			'className' => 'Feature',
 			'foreignKey' => 'feature_id',
+			'conditions' => '',
+			'fields' => '',
+			'order' => ''
+		),
+		'Page' => array(
+			'className' => 'Page',
+			'foreignKey' => 'page_id',
 			'conditions' => '',
 			'fields' => '',
 			'order' => ''

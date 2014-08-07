@@ -55,10 +55,10 @@ class FeaturePagesController extends AppController {
 				$this->Session->setFlash(__('The feature page could not be saved. Please, try again.'));
 			}
 		}
-		$pages = $this->FeaturePage->Page->find('list');
 		$users = $this->FeaturePage->User->find('list');
 		$features = $this->FeaturePage->Feature->find('list');
-		$this->set(compact('pages', 'users', 'features'));
+		$pages = $this->FeaturePage->Page->find('list');
+		$this->set(compact('users', 'features', 'pages'));
 	}
 
 /**
@@ -83,10 +83,10 @@ class FeaturePagesController extends AppController {
 			$options = array('conditions' => array('FeaturePage.' . $this->FeaturePage->primaryKey => $id));
 			$this->request->data = $this->FeaturePage->find('first', $options);
 		}
-		$pages = $this->FeaturePage->Page->find('list');
 		$users = $this->FeaturePage->User->find('list');
 		$features = $this->FeaturePage->Feature->find('list');
-		$this->set(compact('pages', 'users', 'features'));
+		$pages = $this->FeaturePage->Page->find('list');
+		$this->set(compact('users', 'features', 'pages'));
 	}
 
 /**

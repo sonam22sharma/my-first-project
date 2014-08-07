@@ -1,4 +1,3 @@
-
 <div class="container">
 	<h2><?php echo __('Users'); ?></h2>
 	<table class="table table-hover" cellpadding="0" cellspacing="0">
@@ -37,9 +36,18 @@
 	?>
 	</div>
 </div>
+
+
+<?php
+	$this->start('left_area');
+	?>
 <div class="actions">
 	<h3><?php echo __('Actions'); ?></h3>
 	<ul>
 		<li><?php echo $this->Html->link(__('New User'), array('action' => 'add')); ?></li>
 	</ul>
 </div>
+
+<?php
+	$this->end();
+	?>

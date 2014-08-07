@@ -14,23 +14,52 @@ class MenusController extends AppController {
  * @var array
  */
 	public $components = array('Paginator');
-
-
-
-    public function beforeFilter() {
-	//check login or notice
-
+	
+	public function beforeFilter(){
 		parent::beforeFilter();
-
-		$this->Auth->allow();
+		$this->Auth->allow('populate', 'header_menu', 'default_page');
 	}
-
+	
+	public function populate($table = ''){
+		
+		if (empty($table)) {
+			echo '{}'; exit;
+		}
+		
+		$modelName = Inflector::classify($table);
+		$this->loadModel($modelName);
+		
+		echo json_encode($this->$modelName->find('list'));
+		exit;	
+	}
+	
+	public function header_menu() {
+		
+		if (empty($this->request->params['requested'])) {
+			throw new ForbiddenException();
+		}
+		
+		$options = array('conditions' => array('Menu.status' => 'Active'));
+		return $this->Menu->find('all', $options);
+		
+	}
+	
+	public function default_page() {
+	
+		$options = array('conditions' => array('Menu.status' => 'Active', 'Menu.default' => 1));
+		
+		$menu = $this->Menu->find('first', $options);
+		
+		$this->redirect(array('controller'=>$menu['Menu']['parent_type'], 'action' => 'name',$menu['Menu']['id'],$menu['Menu']['slug']));
+		
+	}
+	
 /**
  * index method
  *
  * @return void
  */
-	public function admin_index() {
+	public function index() {
 		$this->Menu->recursive = 0;
 		$this->set('menus', $this->Paginator->paginate());
 	}
@@ -42,7 +71,7 @@ class MenusController extends AppController {
  * @param string $id
  * @return void
  */
-	public function admin_view($id = null) {
+	public function view($id = null) {
 		if (!$this->Menu->exists($id)) {
 			throw new NotFoundException(__('Invalid menu'));
 		}
@@ -55,7 +84,7 @@ class MenusController extends AppController {
  *
  * @return void
  */
-	public function admin_add() {
+	public function add() {
 		if ($this->request->is('post')) {
 			$this->Menu->create();
 			if ($this->Menu->save($this->request->data)) {
@@ -76,7 +105,7 @@ class MenusController extends AppController {
  * @param string $id
  * @return void
  */
-	public function admin_edit($id = null) {
+	public function edit($id = null) {
 		if (!$this->Menu->exists($id)) {
 			throw new NotFoundException(__('Invalid menu'));
 		}
@@ -102,7 +131,7 @@ class MenusController extends AppController {
  * @param string $id
  * @return void
  */
-	public function admin_delete($id = null) {
+	public function delete($id = null) {
 		$this->Menu->id = $id;
 		if (!$this->Menu->exists()) {
 			throw new NotFoundException(__('Invalid menu'));
@@ -114,60 +143,4 @@ class MenusController extends AppController {
 			$this->Session->setFlash(__('The menu could not be deleted. Please, try again.'));
 		}
 		return $this->redirect(array('action' => 'index'));
-	}
-
-
-
-
-
-	public function populate($value) {
-
-
-		$classifier = Inflector::classify($value);
-
-		$this->loadModel($classifier);
-	
-		echo json_encode($this->$classifier->find('list'));
-
-		exit;
-}
-
-	
-	public function header_menu() {
-		
-		if (empty($this->request->params['requested'])) {
-			throw new ForbiddenException();
-		}
-		
-		$options = array('conditions' => array('Menu.status' => 'Active'));
-		return $this->Menu->find('all', $options);
-		
-	}
-
-	public function default_page(){
-
-
-		$options = array('conditions'=>array('Menu.status'=>'Active','Menu.default'=>'1'));
-
-		$abc = $this->Menu->find('first',$options);
-
-		$this->redirect(array('controller'=>$abc['Menu']['parent_type'],'action'=>'view',$abc['Menu']['parent_id']));
-
-		return $abc;
-
-	}
-
-
-	public function admin_default_page(){
-
-
-		$options = array('conditions'=>array('Menu.status'=>'Active','Menu.default'=>'1'));
-
-		$abc = $this->Menu->find('first',$options);
-
-		$this->redirect(array('controller'=>$abc['Menu']['parent_type'],'action'=>'view',$abc['Menu']['parent_id']));
-
-		return $abc;
-
-	}
-}
+	}}
