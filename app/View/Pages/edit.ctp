@@ -1,9 +1,10 @@
 <div class="pages form">
-<?php echo $this->NewForm->create('Page', array('role'=>'form')); ?>
+<?php echo $this->NewForm->create('Page', array('role'=>'form','enctype'=>'multipart/form-data')); ?>
 	<fieldset>
 		<legend><?php echo __('Edit Page'); ?></legend>
 	<?php
 		echo $this->NewForm->input('id', array('div' => array('class' => 'form-group'), 'class' => 'form-control'));
+		echo $this->NewForm->input('upload_image', array('type'=>'file','div' => array('class' => 'form-group'), 'class' => 'form-control'));
 		echo $this->NewForm->input('name', array('div' => array('class' => 'form-group'), 'class' => 'form-control'));
 		echo $this->NewForm->tinymce('description', array('div' => array('class' => 'form-group'), 'class' => 'form-control'));
 		echo $this->NewForm->input('user_id', array('div' => array('class' => 'form-group'), 'class' => 'form-control'));

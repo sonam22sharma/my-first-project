@@ -1,5 +1,7 @@
 <?php
 App::uses('AppController', 'Controller');
+App::uses('Folder', 'Utility');
+App::uses('File', 'Utility');
 /**
  * Pages Controller
  *
@@ -85,11 +87,26 @@ class PagesController extends AppController {
 		if ($this->request->is('post')) {
 			$this->Page->create();
 			if ($this->Page->save($this->request->data)) {
+				
+			$dir = new Folder('Upload'.DS.'Images',true,'0755');
+				
+				if (is_uploaded_file($this->request->data['Page']['upload_image']['tmp_name']))
+				{
+					move_uploaded_file(
+					$this->request->data['Page']['upload_image']['tmp_name'],
+					'Upload'.DS.'Images' .DS. $this->Page->id
+					);
+						
+					// store the filename in the array to be saved to the db
+					//$this->request->data['Page']['upload_image'] = $this->request->data['Page']['upload_image']['name'];
+				}		
+								
 				$this->Session->setFlash(__('The page has been saved.'));
 				return $this->redirect(array('action' => 'index'));
 			} else {
 				$this->Session->setFlash(__('The page could not be saved. Please, try again.'));
-			}
+			}	
+			
 		}
 		$users = $this->Page->User->find('list');
 		$pageGroups = $this->Page->PageGroup->find('list');
@@ -110,6 +127,20 @@ class PagesController extends AppController {
 		$this->helpers[] = 'NewForm';
 		if ($this->request->is(array('post', 'put'))) {
 			if ($this->Page->save($this->request->data)) {
+
+				$dir = new Folder('Upload'.DS.'Images',true,'0755');
+				
+				if (is_uploaded_file($this->request->data['Page']['upload_image']['tmp_name']))
+				{
+					move_uploaded_file(
+					$this->request->data['Page']['upload_image']['tmp_name'],
+					'Upload'.DS.'Images' .DS. $this->request->data['Page']['upload_image']['name']
+					);
+						
+					// store the filename in the array to be saved to the db
+					//$this->request->data['Page']['upload_image'] = $this->request->data['Page']['upload_image']['name'];
+				}		
+				
 				$this->Session->setFlash(__('The page has been saved.'));
 				return $this->redirect(array('action' => 'index'));
 			} else {

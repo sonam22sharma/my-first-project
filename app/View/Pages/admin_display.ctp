@@ -13,7 +13,7 @@ $this->start('banner_area');?>
 <div class="jumbotron">
 	<div class="page-header">
 		<h1>
-			My CMS <small>A Very Lightweight CMS :)</small>
+			My CMS Admin Panel <small> backend area :)</small>
 		</h1>
 	</div>
 	<a class="btn btn-primary btn-lg" role="button">Learn more</a>
@@ -28,7 +28,6 @@ echo $this->element('left_sidebar');
 $this->end();
 ?>
 
-ertthghvghjh
 
 
 <?php
