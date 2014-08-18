@@ -1,13 +1,20 @@
 <h1><?php echo h($page['Page']['name']); ?></h1>
-<p>category: <?php echo $this->Html->link($page['PageGroup']['name'], array('controller' => 'page_groups', 'action' => 'view', $page['PageGroup']['id'])); ?></p>
+
+
+<div class="col-md-4 col-sm-6">
+                <a href="portfolio-item.html">
+                <?php $path1 = $this->webroot.'Upload/Images/vision'; ?>
+                <img class="img-responsive img-portfolio img-hover" src="<?php echo $path1; ?>" />
+                </a>
+</div>
+            
+
 
 <div class="row">
 <div class="col-md-12">
 			<?php echo ($page['Page']['page_content']); ?>
 </div>
 </div>
-
-
 
 <?php
 	$this->start('left_area');

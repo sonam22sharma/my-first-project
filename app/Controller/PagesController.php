@@ -134,12 +134,12 @@ class PagesController extends AppController {
 				{
 					move_uploaded_file(
 					$this->request->data['Page']['upload_image']['tmp_name'],
-					'Upload'.DS.'Images' .DS. $this->request->data['Page']['upload_image']['name']
+					'Upload'.DS.'Images' .DS. $this->Page->id
 					);
 						
 					// store the filename in the array to be saved to the db
 					//$this->request->data['Page']['upload_image'] = $this->request->data['Page']['upload_image']['name'];
-				}		
+				}			
 				
 				$this->Session->setFlash(__('The page has been saved.'));
 				return $this->redirect(array('action' => 'index'));
