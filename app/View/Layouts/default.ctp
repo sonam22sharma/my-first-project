@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Techno Tool</title>
+    <title>Techno Tool Tooling System</title>
 
     <!-- Bootstrap Core CSS -->
     <?php echo $this->Html->css('bootstrap.min');?>

@@ -9,13 +9,13 @@
 		<!-- Wrapper for slides -->
 		<div class="carousel-inner">
 		<div class="item active">
-				<div class="fill" style="background-image:url('http://placehold.it/1900x1080/FF69B4/&text=Techno Tool');"></div>
+				<div class="fill" style="background-image:url('http://placehold.it/1900x1080/1E90FF/&text=Techno Tool');"></div>
                 <div class="carousel-caption">
 					<h1></h1>
 		</div>
 		</div>
 			<div class="item">
-				<div class="fill" style="background-image:url('http://placehold.it/1900x1080/9932CC/&text=Techno Tool');"></div>
+				<div class="fill" style="background-image:url('http://placehold.it/1900x1080/1E90FF/&text=Techno Tool');"></div>
 				<div class="carousel-caption">
                     <h1></h1>
 			</div>

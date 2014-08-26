@@ -1,13 +1,18 @@
 <h1><?php echo h($page['Page']['name']); ?></h1>
-<p>category: <?php echo $this->Html->link($page['PageGroup']['name'], array('controller' => 'page_groups', 'action' => 'view', $page['PageGroup']['id'])); ?></p>
+
+<div class="col-md-3">
+                <a href="portfolio-item.html">
+                <?php $path1 = $this->webroot.'Upload/Images/'.$page['Page']['id']; ?>
+                <img class="img-responsive img-portfolio img-hover" src="<?php echo $path1; ?>" />
+                </a>
+</div>
 
 <div class="row">
-<div class="col-md-12">
+<div class="col-md-8">
 			<?php echo ($page['Page']['page_content']); ?>
 </div>
 </div>
 
-<p>created by: <?php echo $this->Html->link($page['User']['username'], array('controller' => 'users', 'action' => 'view', $page['User']['id'])); ?> on <?php echo h($page['Page']['created']); ?> updated on <?php echo h($page['Page']['modified']); ?></p>
 
 
 <?php

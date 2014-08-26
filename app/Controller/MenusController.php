@@ -40,6 +40,7 @@ class MenusController extends AppController {
 		}
 		
 		$options = array('conditions' => array('Menu.status' => 'Active'));
+		$options['order'] = 'Menu.sequence';
 		return $this->Menu->find('all', $options);
 		
 	}

@@ -1,17 +1,12 @@
 <h1><?php echo h($page['Page']['name']); ?></h1>
-
-
-<div class="col-md-4 col-sm-6">
+<div class="col-md-4">
                 <a href="portfolio-item.html">
-                <?php $path1 = $this->webroot.'Upload/Images/vision'; ?>
+                <?php $path1 = $this->webroot.'Upload/Images/'.$page['Page']['id']; ?>
                 <img class="img-responsive img-portfolio img-hover" src="<?php echo $path1; ?>" />
                 </a>
 </div>
-            
-
-
 <div class="row">
-<div class="col-md-12">
+<div class="col-md-7">
 			<?php echo ($page['Page']['page_content']); ?>
 </div>
 </div>

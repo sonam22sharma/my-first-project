@@ -9,7 +9,7 @@
                     <span class="icon-bar"></span>
                 </button>
                 
-                <?php echo $this->Html->link("Techno Tool", '/', array('class'=>"navbar-brand")); ?>
+                <?php echo $this->Html->link("Techno Tool Tooling System", '/', array('class'=>"navbar-brand")); ?>
                
             </div>
             <!-- Collect the nav links, forms, and other content for toggling -->
@@ -25,7 +25,7 @@
 				{					
 					$par = (isset($this->request->params['pass'][0]))?$this->request->params['pass'][0]:'';
 					
-					echo '<li class="'.(($this->request->params['controller'] == $header_menu['Menu']['parent_type'] && $this->request->params['action'] == 'name')?'active':'').'">';
+					echo '<li class="'.(($this->request->params['controller'] == $header_menu['Menu']['parent_type'] && $this->request->params['action'] == 'name' && $par == $header_menu['Menu']['id'])?'active':'').'">';
 					
 					echo $this->Html->link($header_menu['Menu']['name'], '/'.$header_menu['Menu']['parent_type'].'/name/'.$header_menu['Menu']['id'].'/'.$header_menu['Menu']['slug']);
 					
